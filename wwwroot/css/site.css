@@ -1,0 +1,48 @@
+:root {
+    --fdiniz-blue: #073d78;
+    --fdiniz-blue-dark: #022b57;
+    --fdiniz-cyan: #15b8cc;
+
+    --white: #ffffff;
+    --background: #f8fafc;
+    --text: #152238;
+    --text-light: #667085;
+
+    --container: 1200px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+main {
+    width: 100%;
+}
+
+.container {
+    width: min(90%, var(--container));
+    margin-inline: auto;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}

@@ -1,18 +1,14 @@
-using DotNetEnv;
-using FDINIZ_Lab.Models;
-using FDINIZ_Lab.Services;
 
-Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuração do e-mail
-builder.Services.Configure<EmailSettings>(
-    builder.Configuration.GetSection("EmailSettings")
-);
+// builder.Services.Configure<EmailSettings>(
+//     builder.Configuration.GetSection("EmailSettings")
+// );
 
-// Serviço de e-mail
-builder.Services.AddScoped<IEmailService, EmailService>();
+// // Serviço de e-mail
+// builder.Services.AddScoped<IEmailService, EmailService>();
 
 // MVC
 builder.Services.AddControllersWithViews();

@@ -1,0 +1,48 @@
+# Build
+bin /
+obj /
+
+# Visual Studio / VS Code
+.vs /
+.vscode /
+
+# Git
+.git /
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Configurações locais / segredos
+.env
+.env.*
+appsettings.Development.json
+appsettings.*.local.json
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Testes / cobertura
+TestResults/
+coverage/
+coverage.*
+
+# Pacotes locais
+packages/
+
+# Publicação local
+publish/
+out/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml

@@ -1,0 +1,19 @@
+@model Exame
+<a class="cartao-exame" asp-controller="Exames" asp-action="Detalhe" asp-route-slug="@Model.Slug">
+    <span class="cartao-exame__capa capa--@Model.Categoria.ToString().ToLowerInvariant()">
+        <i class="fa-solid @Model.Categoria.Icone()" aria-hidden="true"></i>
+        <span class="etiqueta etiqueta--@Model.Categoria.ToString().ToLowerInvariant()">@Model.Categoria.Sigla()</span>
+    </span>
+    <span class="cartao-exame__nome">@Model.Nome</span>
+    <span class="cartao-exame__info">
+        @if (Model.TipoPreparo != TipoPreparo.SemPreparo)
+        {
+            <span class="aviso-preparo"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> @Model.TipoPreparo.Nome()</span>
+        }
+        else
+        {
+            <span>Sem preparo</span>
+        }
+        <span>Prazo: @Model.Prazo</span>
+    </span>
+</a>

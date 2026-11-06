@@ -1,0 +1,72 @@
+@model IReadOnlyList<Unidade>
+@{
+    ViewData["Title"] = "Unidades";
+    ViewData["Descricao"] = "Endereços, horários e telefones das unidades do Laboratório F. Diniz em Campina Grande e região.";
+    var regioes = (IReadOnlyList<(string Valor, string Nome)>)ViewBag.Regioes;
+    var atual = ViewBag.RegiaoAtual as string;
+}
+
+<div class="faixa-titulo">
+    <div class="container">
+        <nav class="trilha" aria-label="Você está em">
+            <a asp-controller="Home" asp-action="Index">Início</a>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            <span aria-current="page">Unidades</span>
+        </nav>
+        <h1>Estamos cada vez mais perto de você</h1>
+        <p>Encontre a unidade mais próxima, veja horários e como chegar.</p>
+    </div>
+</div>
+
+<div class="container secao secao--estreita">
+    <nav class="chips" aria-label="Filtrar por região">
+        <a class="chip @(atual is null ? "chip--ativo" : "")" asp-action="Unidades" aria-current="@(atual is null ? "true" : null)">Todas</a>
+        @foreach (var (valor, nome) in regioes)
+        {
+            <a class="chip @(atual == valor ? "chip--ativo" : "")" asp-action="Unidades" asp-route-regiao="@valor"
+               aria-current="@(atual == valor ? "true" : null)">@nome</a>
+        }
+    </nav>
+
+    <div class="grade-unidades">
+        @foreach (var u in Model)
+        {
+            <article class="unidade">
+                @if (u.Imagem is not null)
+                {
+                    <img src="@u.Imagem" alt="Fachada da @u.Nome" loading="lazy" width="400" height="240">
+                }
+                <div class="unidade__corpo">
+                    <span class="etiqueta etiqueta--unidade">@u.TipoNome</span>
+                    <h2>@u.Nome</h2>
+                    <address>
+                        @foreach (var linha in u.EnderecoLinhas)
+                        {
+                            @linha<br>
+                        }
+                    </address>
+                    <dl class="horarios">
+                        <div><dt>Seg a sex</dt><dd>@(u.HorarioSemana ?? "Fechado")</dd></div>
+                        <div><dt>Sábado</dt><dd>@(u.HorarioSabado ?? "Fechado")</dd></div>
+                    </dl>
+                    @if (u.Facilidades.Count > 0)
+                    {
+                        <ul class="facilidades">
+                            @foreach (var f in u.Facilidades)
+                            {
+                                <li>@f</li>
+                            }
+                        </ul>
+                    }
+                    <div class="unidade__acoes">
+                        <span><i class="fa-solid fa-phone" aria-hidden="true"></i> @u.Telefone</span>
+                        @if (u.Mapa is not null)
+                        {
+                            <a href="@u.Mapa" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Como chegar</a>
+                        }
+                    </div>
+                </div>
+            </article>
+        }
+    </div>
+</div>

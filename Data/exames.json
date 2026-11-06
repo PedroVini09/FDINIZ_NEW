@@ -1,0 +1,168 @@
+[
+  {
+    "slug": "hemograma-completo",
+    "nome": "Hemograma Completo",
+    "codigo": "HC-001",
+    "categoria": "Sangue",
+    "material": "Sangue",
+    "metodo": "Contador Automático",
+    "preparo": "Jejum de 8h",
+    "tipoPreparo": "Jejum",
+    "prazo": "24h",
+    "sinonimos": [
+      "Hemograma",
+      "Hemácias",
+      "Leucócitos",
+      "Plaquetas"
+    ],
+    "disponivelEmTodasUnidades": true
+  },
+  {
+    "slug": "glicemia-em-jejum",
+    "nome": "Glicemia em Jejum",
+    "codigo": "GL-002",
+    "categoria": "Sangue",
+    "material": "Sangue",
+    "metodo": "Enzimático Colorimétrico",
+    "preparo": "Jejum de 8h obrigatório",
+    "tipoPreparo": "Jejum",
+    "prazo": "24h",
+    "sinonimos": [
+      "Glicose",
+      "Açúcar no sangue"
+    ],
+    "disponivelEmTodasUnidades": true
+  },
+  {
+    "slug": "colesterol-total-e-fracoes",
+    "nome": "Colesterol Total e Frações",
+    "codigo": "CT-003",
+    "categoria": "Sangue",
+    "material": "Sangue",
+    "metodo": "Enzimático Colorimétrico",
+    "preparo": "Jejum de 12h",
+    "tipoPreparo": "Jejum",
+    "prazo": "48h",
+    "sinonimos": [
+      "Colesterol",
+      "HDL",
+      "LDL",
+      "Lipidograma"
+    ],
+    "disponivelEmTodasUnidades": true
+  },
+  {
+    "slug": "tsh-e-t4-livre",
+    "nome": "TSH e T4 Livre",
+    "codigo": "TT-004",
+    "categoria": "Sangue",
+    "material": "Sangue",
+    "metodo": "Quimioluminescência",
+    "preparo": "Nenhum preparo especial",
+    "tipoPreparo": "SemPreparo",
+    "prazo": "72h",
+    "sinonimos": [
+      "Tireoide",
+      "TSH",
+      "T4"
+    ],
+    "disponivelEmTodasUnidades": true
+  },
+  {
+    "slug": "creatinina",
+    "nome": "Creatinina",
+    "codigo": "CR-005",
+    "categoria": "Sangue",
+    "material": "Sangue",
+    "metodo": "Cinético",
+    "preparo": "Evitar atividade física 72h antes",
+    "tipoPreparo": "Especial",
+    "prazo": "24h",
+    "sinonimos": [
+      "Função renal",
+      "Rins"
+    ],
+    "disponivelEmTodasUnidades": true
+  },
+  {
+    "slug": "eas-urina-tipo-1",
+    "nome": "EAS (Urina Tipo 1)",
+    "codigo": "EU-006",
+    "categoria": "Urina",
+    "material": "Urina",
+    "metodo": "Físico-Químico e Sedimento",
+    "preparo": "Primeira urina da manhã",
+    "tipoPreparo": "Especial",
+    "prazo": "24h",
+    "sinonimos": [
+      "Urina tipo 1",
+      "Sumário de urina"
+    ],
+    "disponivelEmTodasUnidades": true
+  },
+  {
+    "slug": "urocultura",
+    "nome": "Urocultura",
+    "codigo": "UC-007",
+    "categoria": "Urina",
+    "material": "Urina",
+    "metodo": "Cultura e Antibiograma",
+    "preparo": "Coleta asséptica",
+    "tipoPreparo": "Especial",
+    "prazo": "5 dias",
+    "sinonimos": [
+      "Cultura de urina",
+      "Antibiograma"
+    ],
+    "disponivelEmTodasUnidades": true
+  },
+  {
+    "slug": "parasitologico-de-fezes",
+    "nome": "Parasitológico de Fezes",
+    "codigo": "PF-008",
+    "categoria": "Fezes",
+    "material": "Fezes",
+    "metodo": "Método de Hoffman",
+    "preparo": "Não usar pomadas ou supositórios",
+    "tipoPreparo": "Especial",
+    "prazo": "48h",
+    "sinonimos": [
+      "EPF",
+      "Parasitas",
+      "Verminose"
+    ],
+    "disponivelEmTodasUnidades": true
+  },
+  {
+    "slug": "ultrassonografia-abdominal",
+    "nome": "Ultrassonografia Abdominal",
+    "codigo": "UA-009",
+    "categoria": "Imagem",
+    "material": "-",
+    "metodo": "Ultrassom",
+    "preparo": "Jejum de 8h",
+    "tipoPreparo": "Jejum",
+    "prazo": "24h",
+    "sinonimos": [
+      "Ultrassom",
+      "USG abdome"
+    ],
+    "disponivelEmTodasUnidades": false
+  },
+  {
+    "slug": "raio-x-de-torax",
+    "nome": "Raio-X de Tórax",
+    "codigo": "RX-010",
+    "categoria": "Imagem",
+    "material": "-",
+    "metodo": "Radiografia Digital",
+    "preparo": "Nenhum preparo especial",
+    "tipoPreparo": "SemPreparo",
+    "prazo": "24h",
+    "sinonimos": [
+      "Raio X",
+      "Radiografia de tórax"
+    ],
+    "disponivelEmTodasUnidades": false
+  }
+]

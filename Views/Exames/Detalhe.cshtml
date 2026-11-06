@@ -1,0 +1,115 @@
+@model DetalheExameViewModel
+@{
+    var e = Model.Exame;
+    var site = SiteOpcoes.Value;
+    ViewData["Title"] = e.Nome;
+    ViewData["Descricao"] = $"{e.Nome}: preparo, material, método e prazo do resultado no Laboratório F. Diniz.";
+    var categoriaCss = e.Categoria.ToString().ToLowerInvariant();
+}
+
+<div class="faixa-titulo faixa-titulo--clara">
+    <div class="container">
+        <nav class="trilha" aria-label="Você está em">
+            <a asp-controller="Home" asp-action="Index">Início</a>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            <a asp-controller="Exames" asp-action="Index">Catálogo de exames</a>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            <a asp-controller="Exames" asp-action="Index" asp-route-categoria="@e.Categoria">Exames de @e.Categoria.Nome().ToLowerInvariant()</a>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            <span aria-current="page">@e.Nome</span>
+        </nav>
+    </div>
+</div>
+
+<div class="container detalhe">
+    <div class="detalhe__capa capa--@categoriaCss" aria-hidden="true">
+        <i class="fa-solid @e.Categoria.Icone()"></i>
+        <span class="etiqueta etiqueta--@categoriaCss">@e.Categoria.Sigla()</span>
+    </div>
+
+    <div class="detalhe__resumo">
+        <h1>@e.Nome</h1>
+        <p class="detalhe__codigo">Código <strong>@e.Codigo</strong></p>
+
+        <div class="caixa caixa--destaque @(e.TipoPreparo == TipoPreparo.SemPreparo ? "" : "caixa--alerta")">
+            <h2>Preparo</h2>
+            <p>
+                @if (e.TipoPreparo != TipoPreparo.SemPreparo)
+                {
+                    <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+                }
+                @e.Preparo
+            </p>
+        </div>
+
+        <dl class="caixa ficha">
+            <div><dt>Material</dt><dd>@(e.Material == "-" ? "Não se aplica" : e.Material)</dd></div>
+            <div><dt>Método</dt><dd>@e.Metodo</dd></div>
+            <div><dt>Prazo do resultado</dt><dd>@e.Prazo</dd></div>
+            <div><dt>Onde fazer</dt><dd>@(e.DisponivelEmTodasUnidades ? "Em todas as unidades" : "Consulte as unidades")</dd></div>
+        </dl>
+
+        <div class="detalhe__acoes">
+            <a class="botao" href="@site.WhatsAppLink($"Olá! Gostaria de agendar o exame {e.Nome} ({e.Codigo}).")" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Agendar pelo WhatsApp
+            </a>
+            <a class="botao botao--contorno-escuro" asp-controller="Home" asp-action="Unidades">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Ver unidades
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="abas" data-abas>
+        <div class="abas__lista" role="tablist" aria-label="Informações do exame">
+            <button type="button" role="tab" id="aba-preparo" aria-controls="painel-preparo" aria-selected="true">Antes do exame</button>
+            <button type="button" role="tab" id="aba-dia" aria-controls="painel-dia" aria-selected="false" tabindex="-1">No dia da coleta</button>
+            <button type="button" role="tab" id="aba-duvidas" aria-controls="painel-duvidas" aria-selected="false" tabindex="-1">Dúvidas frequentes</button>
+        </div>
+
+        <section class="abas__painel" role="tabpanel" id="painel-preparo" aria-labelledby="aba-preparo">
+            <h2 class="sr-only">Antes do exame</h2>
+            <ul>
+                <li><strong>Preparo deste exame:</strong> @e.Preparo.</li>
+                <li><strong>Jejum:</strong> alguns exames exigem de 8 a 12 horas. Siga o tempo indicado para este exame.</li>
+                <li><strong>Medicações:</strong> informe os medicamentos que você usa. Alguns podem interferir no resultado.</li>
+                <li><strong>Restrições:</strong> evite álcool nas 72 horas e fumo nas 24 horas antes da coleta de sangue.</li>
+            </ul>
+        </section>
+
+        <section class="abas__painel" role="tabpanel" id="painel-dia" aria-labelledby="aba-dia">
+            <h2 class="sr-only">No dia da coleta</h2>
+            <ul>
+                <li>Leve documento com foto, a requisição médica e a carteirinha do convênio, se tiver.</li>
+                <li>Sua amostra é identificada na sua frente com código de barras.</li>
+                <li>O resultado sai em <strong>@e.Prazo</strong> e pode ser consultado no portal de resultados ou retirado na unidade.</li>
+            </ul>
+        </section>
+
+        <section class="abas__painel" role="tabpanel" id="painel-duvidas" aria-labelledby="aba-duvidas">
+            <h2 class="sr-only">Dúvidas frequentes</h2>
+            <dl class="perguntas">
+                <dt>Preciso de requisição médica?</dt>
+                <dd>Sim, a maioria dos exames laboratoriais exige requisição médica.</dd>
+                <dt>Posso fazer vários exames no mesmo dia?</dt>
+                <dd>Na maioria dos casos, sim. Alguns preparos são diferentes entre si; confirme com a nossa central.</dd>
+                <dt>O laboratório faz coleta domiciliar?</dt>
+                <dd>Sim, para exames de rotina. Fale com a central para ver a disponibilidade na sua região.</dd>
+            </dl>
+        </section>
+    </div>
+
+    @if (Model.Relacionados.Count > 0)
+    {
+        <section class="secao secao--estreita" aria-labelledby="relacionados-titulo">
+            <h2 id="relacionados-titulo" class="titulo-secao titulo-secao--esquerda">Outros exames de @e.Categoria.Nome().ToLowerInvariant()</h2>
+            <div class="grade-exames grade-exames--quatro">
+                @foreach (var relacionado in Model.Relacionados)
+                {
+                    <partial name="_CartaoExame" model="relacionado" />
+                }
+            </div>
+        </section>
+    }
+</div>

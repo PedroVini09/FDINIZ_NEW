@@ -11,4 +11,16 @@
         <PackageReference Include="DotNetEnv" Version="3.2.0" />
     </ItemGroup>
 
+    <!-- O projeto de testes fica numa subpasta e não pode ser compilado junto com o site. -->
+    <ItemGroup>
+        <Compile Remove="FDINIZ_Lab.Tests/**" />
+        <Content Remove="FDINIZ_Lab.Tests/**" />
+        <None Remove="FDINIZ_Lab.Tests/**" />
+        <Content Update="Data/**/*.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="FDINIZ_Lab.Tests" />
+    </ItemGroup>
+
 </Project>

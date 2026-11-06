@@ -1,0 +1,16 @@
+@{
+    var codigo = (int)ViewBag.Codigo;
+    var (titulo, texto) = codigo switch
+    {
+        404 => ("Página não encontrada", "O endereço pode ter mudado ou não existe mais."),
+        429 => ("Muitas tentativas", "Aguarde alguns minutos e tente novamente."),
+        _ => ("Algo deu errado", "Tivemos um problema ao abrir esta página. Tente de novo em instantes.")
+    };
+    ViewData["Title"] = titulo;
+}
+<div class="container secao confirmacao">
+    <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+    <h1>@titulo</h1>
+    <p>@texto</p>
+    <a class="botao" asp-controller="Home" asp-action="Index">Voltar ao início</a>
+</div>

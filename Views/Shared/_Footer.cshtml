@@ -1,0 +1,43 @@
+@{
+    var site = SiteOpcoes.Value;
+}
+<footer class="rodape">
+    <div class="container rodape__grade">
+        <div>
+            <img src="~/img/logo-fdiniz.webp" alt="Laboratório F. Diniz" width="120" height="80" loading="lazy">
+            <p>Cuidando da sua saúde com excelência, confiança e transparência. Referência em exames laboratoriais e atendimento humanizado desde 1961.</p>
+            <div class="redes">
+                <a href="https://www.instagram.com/laboratoriofdiniz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/LaboratorioFDiniz/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/company/laborat%C3%B3rio-f.diniz/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/@@LabFDiniz" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            </div>
+        </div>
+        <div>
+            <h2>Navegação</h2>
+            <ul>
+                <li><a asp-controller="Exames" asp-action="Index">Catálogo de exames</a></li>
+                <li><a asp-controller="Home" asp-action="Unidades">Unidades</a></li>
+                <li><a asp-controller="Home" asp-action="Index" asp-fragment="coleta-domiciliar">Coleta domiciliar</a></li>
+                <li><a asp-controller="Contato" asp-action="Index">Fale conosco</a></li>
+            </ul>
+        </div>
+        <div>
+            <h2>Atendimento</h2>
+            <ul>
+                <li><i class="fa-solid fa-phone" aria-hidden="true"></i> @site.Telefone</li>
+                <li><a href="@site.WhatsAppLink()" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a></li>
+                <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> @site.EmailPublico</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Privacidade</h2>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Privacy">Política de Privacidade (LGPD)</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="rodape__base">
+        <div class="container">© @DateTime.Now.Year Laboratório F. Diniz. Todos os direitos reservados.</div>
+    </div>
+</footer>

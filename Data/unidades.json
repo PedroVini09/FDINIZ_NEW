@@ -1,0 +1,209 @@
+[
+  {
+    "slug": "matriz",
+    "nome": "Unidade Matriz - Centro",
+    "regiao": "centro",
+    "tipo": "matriz",
+    "telefone": "(83) 3315-7373",
+    "enderecoLinhas": [
+      "Avenida Pedro II, 407, Centro",
+      "Próximo a Integração",
+      "Campina Grande - PB"
+    ],
+    "facilidades": [
+      "Acessível",
+      "Estacionamento",
+      "WiFi grátis",
+      "Todos os exames"
+    ],
+    "horarioSemana": "06:00–19:00",
+    "horarioSabado": "06:00–12:00",
+    "horarioDomingo": null,
+    "imagem": "/img/unidades/matriz.webp",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Avenida%20Pedro%20II%2C%20407%2C%20Centro%2C%20Campina%20Grande%20-%20PB"
+  },
+  {
+    "slug": "catole",
+    "nome": "Unidade Catolé",
+    "regiao": "catole",
+    "tipo": "laboratorio",
+    "telefone": "(83) 3315-7373",
+    "enderecoLinhas": [
+      "Rua João Quirino, 820, Catolé",
+      "Próximo ao Luiza Motta",
+      "Campina Grande - PB"
+    ],
+    "facilidades": [
+      "Estacionamento",
+      "F.Diniz Kids"
+    ],
+    "horarioSemana": "07:00–12:00 e 13:15–17:00",
+    "horarioSabado": null,
+    "horarioDomingo": null,
+    "imagem": "/img/unidades/unidade_catole.webp",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Rua%20Jo%C3%A3o%20Quirino%2C%20820%2C%20Catol%C3%A9%2C%20Campina%20Grande%20-%20PB"
+  },
+  {
+    "slug": "centro2",
+    "nome": "Unidade Centro",
+    "regiao": "centro",
+    "tipo": "laboratorio",
+    "telefone": "(83) 3315-7373",
+    "enderecoLinhas": [
+      "Rua Afonso Campos, 68, Centro",
+      "Próximo ao Cirne Center",
+      "Campina Grande - PB"
+    ],
+    "facilidades": [
+      "Acessível",
+      "WiFi grátis"
+    ],
+    "horarioSemana": "06:00–17:00",
+    "horarioSabado": "06:00–12:00",
+    "horarioDomingo": null,
+    "imagem": "/img/unidades/unidade_centro.webp",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Rua%20Afonso%20Campos%2C%2068%2C%20Centro%2C%20Campina%20Grande%20-%20PB"
+  },
+  {
+    "slug": "malvinas",
+    "nome": "Policlínica Malvinas",
+    "regiao": "malvinas",
+    "tipo": "policlinica",
+    "telefone": "(83) 99149-6634",
+    "enderecoLinhas": [
+      "Rua Jamila Abraão Jorge, 425, Malvinas",
+      "Campina Grande - PB"
+    ],
+    "facilidades": [
+      "Consultas",
+      "Injeções",
+      "Atendimento médico"
+    ],
+    "horarioSemana": "06:00–17:00",
+    "horarioSabado": "06:00–12:00",
+    "horarioDomingo": null,
+    "imagem": "/img/unidades/policlinica.webp",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Rua%20Jamila%20Abra%C3%A3o%20Jorge%2C%20425%2C%20Malvinas%2C%20Campina%20Grande%20-%20PB"
+  },
+  {
+    "slug": "liberdade",
+    "nome": "Policlínica Liberdade",
+    "regiao": "liberdade",
+    "tipo": "policlinica",
+    "telefone": "(83) 3315-7373",
+    "enderecoLinhas": [
+      "R. Odon Bezerra, 440 - Liberdade, Campina Grande - PB, 58414-160"
+    ],
+    "facilidades": [
+      "Consultas",
+      "Receitas",
+      "Exames"
+    ],
+    "horarioSemana": "06:00–17:00",
+    "horarioSabado": null,
+    "horarioDomingo": null,
+    "imagem": "/img/unidades/policlinica_liberdade.webp",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=R.%20Odon%20Bezerra%2C%20440%20-%20Liberdade%2C%20Campina%20Grande%20-%20PB%2C%2058414-160"
+  },
+  {
+    "slug": "san-pietro",
+    "nome": "Unidade San Pietro",
+    "regiao": "prata",
+    "tipo": "laboratorio",
+    "telefone": "(83) 3315-7373",
+    "enderecoLinhas": [
+      "Rua Montevidéu, 720, Prata",
+      "Edifício San Pietro - Térreo",
+      "Campina Grande - PB"
+    ],
+    "facilidades": [
+      "Shopping",
+      "Estacionamento",
+      "Acessível"
+    ],
+    "horarioSemana": "07:00–18:00",
+    "horarioSabado": null,
+    "horarioDomingo": null,
+    "imagem": "/img/unidades/unidade_san_pietro.webp",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Rua%20Montevid%C3%A9u%2C%20720%2C%20Prata%2C%20Campina%20Grande%20-%20PB"
+  },
+  {
+    "slug": "inga",
+    "nome": "Unidade Ingá",
+    "regiao": "inga",
+    "tipo": "laboratorio",
+    "telefone": "(83) 99400-4626",
+    "enderecoLinhas": [
+      "Rua Rui Barbosa, 155 A, Ingá - PB"
+    ],
+    "facilidades": [
+      "Unidade regional",
+      "Coleta domiciliar"
+    ],
+    "horarioSemana": "07:00–17:00",
+    "horarioSabado": null,
+    "horarioDomingo": null,
+    "imagem": "/img/unidades/unidade_inga.webp",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Rua%20Rui%20Barbosa%2C%20155%20A%2C%20Ing%C3%A1%20-%20PB"
+  },
+  {
+    "slug": "queimadas",
+    "nome": "Unidade Queimadas",
+    "regiao": "queimadas",
+    "tipo": "laboratorio",
+    "telefone": "(83) 3315-7373",
+    "enderecoLinhas": [
+      "Rua João Barbosa da Silva, 48, Centro",
+      "Queimadas - PB"
+    ],
+    "facilidades": [
+      "Interior",
+      "Coleta domiciliar"
+    ],
+    "horarioSemana": "07:00–17:00",
+    "horarioSabado": null,
+    "horarioDomingo": null,
+    "imagem": "/img/unidades/unidade_queimadas.webp",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Rua%20Jo%C3%A3o%20Barbosa%20da%20Silva%2C%2048%2C%20Centro%2C%20Queimadas%20-%20PB"
+  },
+  {
+    "slug": "sao-jose",
+    "nome": "Unidade São José da Mata",
+    "regiao": "sao-jose",
+    "tipo": "laboratorio",
+    "telefone": "(83) 99882-0610",
+    "enderecoLinhas": [
+      "Rua Cícero Alexandrino, 485",
+      "São José da Mata - PB"
+    ],
+    "facilidades": [
+      "Interior",
+      "Coleta domiciliar"
+    ],
+    "horarioSemana": "07:00–17:00",
+    "horarioSabado": null,
+    "horarioDomingo": null,
+    "imagem": "/img/unidades/unidade_sao_jose_da_mata.webp",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Rua%20C%C3%ADcero%20Alexandrino%2C%20485%2C%20S%C3%A3o%20Jos%C3%A9%20da%20Mata%20-%20PB"
+  },
+  {
+    "slug": "bezerra-carvalho",
+    "nome": "Unidade Bezerra Carvalho",
+    "regiao": "bezerra-carvalho",
+    "tipo": "laboratorio",
+    "telefone": "(83) 93321-3400",
+    "enderecoLinhas": [
+      "Rua Duque de Caxias,368",
+      "Prata - PB"
+    ],
+    "facilidades": [
+      "Acessível",
+      "WiFi grátis"
+    ],
+    "horarioSemana": "07:00–17:00",
+    "horarioSabado": null,
+    "horarioDomingo": null,
+    "imagem": "/img/unidades/unidade_bezera.webp",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Rua%20Duque%20de%20Caxias%2C368%2C%20Prata%20-%20PB"
+  }
+]

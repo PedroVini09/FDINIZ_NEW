@@ -1,0 +1,76 @@
+@model ContatoViewModel
+@{
+    ViewData["Title"] = "Fale conosco";
+    var site = SiteOpcoes.Value;
+}
+
+<div class="faixa-titulo">
+    <div class="container">
+        <nav class="trilha" aria-label="Você está em">
+            <a asp-controller="Home" asp-action="Index">Início</a>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            <span aria-current="page">Fale conosco</span>
+        </nav>
+        <h1>Fale conosco</h1>
+        <p>Tire dúvidas sobre exames, convênios ou resultados. Respondemos em até 1 dia útil.</p>
+    </div>
+</div>
+
+<div class="container contato secao secao--estreita">
+    <form class="formulario" asp-controller="Contato" asp-action="Index" method="post" novalidate>
+        <div asp-validation-summary="ModelOnly" class="alerta alerta--erro" role="alert"></div>
+
+        <div class="campo">
+            <label asp-for="Nome"></label>
+            <input asp-for="Nome" autocomplete="name" maxlength="80" required>
+            <span asp-validation-for="Nome" class="erro"></span>
+        </div>
+        <div class="campos-lado">
+            <div class="campo">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="email" autocomplete="email" maxlength="120" required>
+                <span asp-validation-for="Email" class="erro"></span>
+            </div>
+            <div class="campo">
+                <label asp-for="Telefone"><span>Telefone</span> <small>(opcional)</small></label>
+                <input asp-for="Telefone" type="tel" autocomplete="tel" maxlength="20">
+                <span asp-validation-for="Telefone" class="erro"></span>
+            </div>
+        </div>
+        <div class="campo">
+            <label asp-for="Assunto"></label>
+            <select asp-for="Assunto" asp-items="Html.GetEnumSelectList<AssuntoContato>()" required>
+                <option value="">Escolha o assunto</option>
+            </select>
+            <span asp-validation-for="Assunto" class="erro"></span>
+        </div>
+        <div class="campo">
+            <label asp-for="Mensagem"></label>
+            <textarea asp-for="Mensagem" rows="6" maxlength="2000" required></textarea>
+            <span asp-validation-for="Mensagem" class="erro"></span>
+        </div>
+
+        @* Campo-armadilha: escondido de pessoas e de leitores de tela. Robôs costumam preenchê-lo. *@
+        <div class="armadilha" aria-hidden="true">
+            <label for="Website">Não preencha este campo</label>
+            <input id="Website" name="Website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="hidden" asp-for="Carimbo">
+
+        <label class="opcao opcao--aceite">
+            <input asp-for="AceitoPrivacidade" type="checkbox">
+            <span>Li e aceito a <a asp-controller="Home" asp-action="Privacy" target="_blank">Política de Privacidade</a>. Meus dados serão usados só para responder este contato.</span>
+        </label>
+        <span asp-validation-for="AceitoPrivacidade" class="erro"></span>
+
+        <button type="submit" class="botao"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar mensagem</button>
+    </form>
+
+    <aside class="contato__canais">
+        <h2>Outros canais</h2>
+        <p><i class="fa-solid fa-phone" aria-hidden="true"></i> Central: <strong>@site.Telefone</strong></p>
+        <p><a href="@site.WhatsAppLink()" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a></p>
+        <p><i class="fa-solid fa-envelope" aria-hidden="true"></i> @site.EmailPublico</p>
+        <p class="nota"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Não envie resultados de exames nem dados de saúde por este formulário.</p>
+    </aside>
+</div>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="FDINIZ_Lab.csproj" />
+  <Project Path="FDINIZ_Lab.Tests/FDINIZ_Lab.Tests.csproj" />
+</Solution>

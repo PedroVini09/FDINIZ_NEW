@@ -1,48 +1,34 @@
 # Build
-bin /
-obj /
+**/bin/
+**/obj/
 
-# Visual Studio / VS Code
-.vs /
-.vscode /
+# Testes (não vão para a imagem do site)
+FDINIZ_Lab.Tests/
+TestResults/
+
+# Editores
+.vs/
+.vscode/
+.idea/
 
 # Git
-.git /
+.git/
 .gitignore
+.github/
 
 # Docker
 Dockerfile*
 docker-compose*
 .dockerignore
 
-# Configurações locais / segredos
+# Segredos e configurações locais
 .env
 .env.*
-appsettings.Development.json
+!.env.example
 appsettings.*.local.json
 
-# Arquivos temporários
-*.tmp
-*.temp
+# Diversos
 *.log
-*.cache
-
-# Sistema operacional
 .DS_Store
 Thumbs.db
-
-# Testes / cobertura
-TestResults/
-coverage/
-coverage.*
-
-# Pacotes locais
-packages/
-
-# Publicação local
-publish/
-out/
-
-# Rider / JetBrains
-.idea/
-*.sln.iml
+README.md

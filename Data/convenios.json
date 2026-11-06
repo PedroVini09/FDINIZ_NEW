@@ -1,0 +1,50 @@
+[
+  {
+    "nome": "AFRAFEP",
+    "logo": "/img/convenios/afrafep.webp"
+  },
+  {
+    "nome": "Amil",
+    "logo": "/img/convenios/amil.webp"
+  },
+  {
+    "nome": "Assefaz",
+    "logo": "/img/convenios/assefaz.webp"
+  },
+  {
+    "nome": "Bradesco Saúde",
+    "logo": "/img/convenios/bradesco.webp"
+  },
+  {
+    "nome": "Camed",
+    "logo": "/img/convenios/camed.webp"
+  },
+  {
+    "nome": "Cassi",
+    "logo": "/img/convenios/cassi.webp"
+  },
+  {
+    "nome": "Fachesf",
+    "logo": "/img/convenios/fachesf.webp"
+  },
+  {
+    "nome": "GEAP",
+    "logo": "/img/convenios/geap.webp"
+  },
+  {
+    "nome": "Saúde Caixa",
+    "logo": "/img/convenios/saude_caixa.webp"
+  },
+  {
+    "nome": "SulAmérica",
+    "logo": "/img/convenios/sulamerica.webp"
+  },
+  {
+    "nome": "Unimed",
+    "logo": "/img/convenios/unimed.webp"
+  },
+  {
+    "nome": "Funasa",
+    "logo": "/img/convenios/funasa.webp"
+  }
+]

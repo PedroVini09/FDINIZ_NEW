@@ -1,0 +1,135 @@
+@model CatalogoViewModel
+@{
+    ViewData["Title"] = "Catálogo de exames";
+    ViewData["Descricao"] = "Consulte os exames do Laboratório F. Diniz: preparo, material, método e prazo de resultado.";
+    var f = Model.Filtro;
+    var r = Model.Resultado;
+    var contagens = (Dictionary<CategoriaExame, int>)ViewBag.Contagens;
+
+    string UrlPagina(int pagina)
+    {
+        var partes = new List<string>();
+        if (f.Busca is not null) partes.Add("q=" + Uri.EscapeDataString(f.Busca));
+        partes.AddRange(f.Categorias.Select(c => "categoria=" + c));
+        if (f.Preparo is not null) partes.Add("preparo=" + f.Preparo);
+        partes.Add("pagina=" + pagina);
+        return Url.Action("Index", "Exames") + "?" + string.Join("&", partes);
+    }
+}
+
+<div class="faixa-titulo">
+    <div class="container">
+        <nav class="trilha" aria-label="Você está em">
+            <a asp-controller="Home" asp-action="Index">Início</a>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            <span aria-current="page">Catálogo de exames</span>
+        </nav>
+        <h1>Catálogo de exames</h1>
+        <p>Encontre o exame, veja o preparo necessário e o prazo do resultado.</p>
+    </div>
+</div>
+
+<div class="container catalogo">
+    <aside class="filtros" aria-label="Filtros do catálogo">
+        <form method="get" asp-controller="Exames" asp-action="Index" class="filtros__form">
+            <div class="campo-busca">
+                <label class="sr-only" for="q">Buscar pelo nome do exame</label>
+                <input id="q" name="q" type="search" value="@f.Busca" maxlength="@FiltroCatalogo.TamanhoMaximoBusca"
+                       placeholder="Buscar exame" autocomplete="off">
+                <button type="submit" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+            </div>
+
+            <fieldset>
+                <legend>Tipo de exame</legend>
+                @foreach (var categoria in Enum.GetValues<CategoriaExame>())
+                {
+                    var id = "cat-" + categoria.ToString().ToLowerInvariant();
+                    <label for="@id" class="opcao">
+                        <input id="@id" type="checkbox" name="categoria" value="@categoria" checked="@f.Categorias.Contains(categoria)">
+                        <span>Exames de @categoria.Nome().ToLowerInvariant()</span>
+                        <span class="contagem">@contagens[categoria]</span>
+                    </label>
+                }
+            </fieldset>
+
+            <fieldset>
+                <legend>Preparo</legend>
+                <label for="prep-todos" class="opcao">
+                    <input id="prep-todos" type="radio" name="preparo" value="" checked="@(f.Preparo is null)">
+                    <span>Todos</span>
+                </label>
+                @foreach (var tipo in Enum.GetValues<TipoPreparo>())
+                {
+                    var id = "prep-" + tipo.ToString().ToLowerInvariant();
+                    <label for="@id" class="opcao">
+                        <input id="@id" type="radio" name="preparo" value="@tipo" checked="@(f.Preparo == tipo)">
+                        <span>@tipo.Nome()</span>
+                    </label>
+                }
+            </fieldset>
+
+            <div class="filtros__acoes">
+                <button type="submit" class="botao">Aplicar filtros</button>
+                <a class="link-limpar" asp-controller="Exames" asp-action="Index">Limpar</a>
+            </div>
+        </form>
+    </aside>
+
+    <section class="resultados" aria-live="polite">
+        <p class="resultados__resumo">
+            @if (r.Total == 0)
+            {
+                <text>Nenhum exame encontrado</text>
+            }
+            else
+            {
+                <text>Exibindo @r.Inicio–@r.Fim de @r.Total @(r.Total == 1 ? "resultado" : "resultados")</text>
+            }
+            @if (f.Busca is not null)
+            {
+                <text> para “<strong>@f.Busca</strong>”</text>
+            }
+        </p>
+
+        @if (r.Total == 0)
+        {
+            <div class="vazio">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <h2>Não encontramos esse exame</h2>
+                <p>Confira a grafia ou tente outro nome. Se preferir, fale com a nossa central pelo @SiteOpcoes.Value.Telefone.</p>
+                <a class="botao" asp-controller="Exames" asp-action="Index">Ver todos os exames</a>
+            </div>
+        }
+        else
+        {
+            <div class="grade-exames">
+                @foreach (var exame in r.Itens)
+                {
+                    <partial name="_CartaoExame" model="exame" />
+                }
+            </div>
+
+            @if (r.TotalPaginas > 1)
+            {
+                <nav class="paginacao" aria-label="Páginas">
+                    @for (var p = 1; p <= r.TotalPaginas; p++)
+                    {
+                        if (p == r.Pagina)
+                        {
+                            <span aria-current="page">@p</span>
+                        }
+                        else
+                        {
+                            <a href="@UrlPagina(p)">@p</a>
+                        }
+                    }
+                </nav>
+            }
+        }
+
+        <div class="legenda">
+            <span><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> Exame com jejum ou preparo especial</span>
+            <span>Prazos contados a partir da coleta, em dias úteis.</span>
+        </div>
+    </section>
+</div>

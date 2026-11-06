@@ -1,0 +1,157 @@
+@inject IWebHostEnvironment Ambiente
+@{
+    ViewData["Title"] = "Início";
+    var site = SiteOpcoes.Value;
+    var convenios = (IReadOnlyList<Convenio>)ViewBag.Convenios;
+    var folderExiste = System.IO.File.Exists(System.IO.Path.Combine(Ambiente.WebRootPath, site.FolderInstitucional.TrimStart('/')));
+    var areas = new[]
+    {
+        (Rotulo: "Sangue", Icone: "fa-droplet", Categoria: "Sangue"),
+        (Rotulo: "Urina", Icone: "fa-flask", Categoria: "Urina"),
+        (Rotulo: "Fezes", Icone: "fa-vial", Categoria: "Fezes"),
+        (Rotulo: "Imagem", Icone: "fa-x-ray", Categoria: "Imagem"),
+    };
+}
+
+<section class="hero" aria-labelledby="hero-titulo">
+    <canvas class="hero__rede" aria-hidden="true"></canvas>
+    <div class="container hero__conteudo">
+        <h1 id="hero-titulo">Cuidando da sua saúde desde 1961</h1>
+        <p>Exames laboratoriais com qualidade e confiança, com @ViewBag.TotalUnidades unidades em Campina Grande e região.</p>
+
+        <ul class="areas" aria-label="Áreas de exames">
+            @foreach (var area in areas)
+            {
+                <li>
+                    <a class="area" asp-controller="Exames" asp-action="Index" asp-route-categoria="@area.Categoria">
+                        <span class="area__hex"><i class="fa-solid @area.Icone" aria-hidden="true"></i></span>
+                        <span class="area__rotulo">@area.Rotulo</span>
+                    </a>
+                </li>
+            }
+            <li>
+                <a class="area" href="#coleta-domiciliar">
+                    <span class="area__hex"><i class="fa-solid fa-house-medical" aria-hidden="true"></i></span>
+                    <span class="area__rotulo">Coleta em casa</span>
+                </a>
+            </li>
+        </ul>
+
+        <form class="busca-rapida" asp-controller="Exames" asp-action="Index" method="get" role="search">
+            <label class="sr-only" for="busca-hero">Buscar exame</label>
+            <input id="busca-hero" name="q" type="search" maxlength="@FiltroCatalogo.TamanhoMaximoBusca"
+                   placeholder="Busque pelo nome do exame" autocomplete="off">
+            <button type="submit" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+        </form>
+
+        <a class="botao botao--contorno" href="@site.WhatsAppLink("Olá! Gostaria de falar com a central do laboratório.")"
+           target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Fale agora com a nossa central
+        </a>
+    </div>
+</section>
+
+<section class="secao" aria-labelledby="diferenciais-titulo">
+    <div class="container">
+        <h2 id="diferenciais-titulo" class="titulo-secao">Por que escolher a F. Diniz</h2>
+        <div class="diferenciais">
+            <article class="diferencial">
+                <i class="fa-solid fa-user-doctor" aria-hidden="true"></i>
+                <h3>Equipe especializada</h3>
+                <p>Profissionais capacitados para oferecer cuidado e acolhimento em cada atendimento.</p>
+                <span class="selo">+50 especialistas</span>
+            </article>
+            <article class="diferencial">
+                <i class="fa-solid fa-barcode" aria-hidden="true"></i>
+                <h3>Atendimento transparente</h3>
+                <p>Todas as amostras são identificadas na sua frente com código de barras, com rastreabilidade total.</p>
+                <span class="selo">100% rastreável</span>
+            </article>
+            <article class="diferencial">
+                <i class="fa-solid fa-microscope" aria-hidden="true"></i>
+                <h3>Instalações modernas</h3>
+                <p>Equipamentos de última geração e ambiente planejado para o seu conforto.</p>
+                <span class="selo">Tecnologia alemã</span>
+            </article>
+            <article class="diferencial">
+                <i class="fa-solid fa-baby" aria-hidden="true"></i>
+                <h3>Teste do pezinho</h3>
+                <p>Testes precisos e confiáveis para cuidar da saúde do seu bebê desde os primeiros dias.</p>
+                <span class="selo">Resultados rápidos</span>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="secao secao--estreita" aria-labelledby="folder-titulo">
+    <div class="container">
+        <div class="faixa-folder">
+            <div class="faixa-folder__capa" aria-hidden="true">
+                <img src="~/img/logo-fdiniz-icone.webp" alt="" width="80" height="54" loading="lazy">
+                <span>Laboratório<br><strong>F. Diniz</strong></span>
+                <small>Desde 1961</small>
+            </div>
+            <h2 id="folder-titulo">Conheça a<br>F. Diniz</h2>
+            <div class="faixa-folder__texto">
+                <p><strong>Experiência, credibilidade e compromisso</strong> com a saúde da nossa região há mais de 60 anos.</p>
+                @if (folderExiste)
+                {
+                    <p>Baixe o folder institucional e conheça nossos serviços.</p>
+                    <a class="botao botao--cinza" href="@site.FolderInstitucional" download>
+                        <i class="fa-solid fa-download" aria-hidden="true"></i> Folder institucional
+                    </a>
+                }
+                else
+                {
+                    <p>Conheça nossas unidades e fale com a nossa equipe.</p>
+                    <a class="botao botao--cinza" asp-action="Unidades">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Ver unidades
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="coleta-domiciliar" class="secao secao--cinza" aria-labelledby="coleta-titulo">
+    <div class="container coleta">
+        <img class="coleta__imagem" src="~/img/coleta-domiciliar.webp" alt="Profissional do laboratório realizando coleta na casa do paciente"
+             width="1200" height="598" loading="lazy">
+        <div>
+            <span class="sobretitulo">Conforto e praticidade</span>
+            <h2 id="coleta-titulo">Coleta domiciliar</h2>
+            <p>Realize seus exames sem sair de casa. Nossa equipe vai até você com segurança, equipamentos modernos e horário flexível.</p>
+            <ul class="lista-check">
+                <li>Atendimento em casa ou no trabalho</li>
+                <li>Equipe especializada e material descartável</li>
+                <li>Resultados pelo portal ou na unidade</li>
+            </ul>
+            <a class="botao" href="@site.WhatsAppLink("Olá! Gostaria de agendar uma coleta domiciliar.")" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Agendar coleta domiciliar
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="secao" aria-labelledby="convenios-titulo">
+    <div class="container">
+        <h2 id="convenios-titulo" class="titulo-secao">Convênios aceitos</h2>
+        <ul class="convenios">
+            @foreach (var convenio in convenios)
+            {
+                <li><img src="@convenio.Logo" alt="@convenio.Nome" loading="lazy" width="140" height="80"></li>
+            }
+        </ul>
+        <p class="nota">Não encontrou seu convênio? Ligue para @site.Telefone e confirme a cobertura.</p>
+    </div>
+</section>
+
+<section class="secao secao--azul" aria-labelledby="unidades-titulo">
+    <div class="container chamada">
+        <div>
+            <h2 id="unidades-titulo">Estamos cada vez mais perto de você</h2>
+            <p>@ViewBag.TotalUnidades unidades em Campina Grande e região, com horários de segunda a sábado.</p>
+        </div>
+        <a class="botao botao--claro" asp-action="Unidades"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Encontrar uma unidade</a>
+    </div>
+</section>

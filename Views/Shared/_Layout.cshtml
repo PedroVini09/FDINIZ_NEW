@@ -1,35 +1,34 @@
+@{
+    var site = SiteOpcoes.Value;
+    var titulo = ViewData["Title"] is string t ? $"{t} | Laboratório F. Diniz" : "Laboratório F. Diniz";
+    var descricao = ViewData["Descricao"] as string
+        ?? "Laboratório F. Diniz: exames laboratoriais com qualidade e confiança em Campina Grande e região desde 1961.";
+}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] Laboratorio Fdiniz</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-
-    <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/header.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/animations.css" asp-append-version="true"/> 
-    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true"/> 
-    <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/parallax.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@titulo</title>
+    <meta name="description" content="@descricao">
+    <meta name="theme-color" content="#03113f">
+    <link rel="icon" type="image/png" href="~/favicon.png">
+    <link rel="stylesheet" href="~/lib/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/lib/fontawesome/css/solid.min.css">
+    <link rel="stylesheet" href="~/lib/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
 </head>
 <body>
-
-<partial name="_Navbar"/>
-
-<main>
-    @RenderBody()
-</main>
-
-
-<partial name="_Footer"/>
-
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
-
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+    <partial name="_Navbar" />
+    <main id="conteudo">
+        @RenderBody()
+    </main>
+    <partial name="_Footer" />
+    <a class="whatsapp-flutuante" href="@site.WhatsAppLink("Olá! Vim pelo site e gostaria de atendimento.")"
+       target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 </html>
